@@ -13,8 +13,8 @@ namespace KKSpeech {
 
 		public static bool shouldRun = true;
 		/* check readme.pdf for explanation on those keys */
-		public static string microphoneUsageDescription = "Microphone will be used in Speech Recognition.";
-		public static string speechRecognitionUsageDescription = "Speech Recognition will be used to let you talk to the app.";
+		public static string microphoneUsageDescription = "Microphone will be used in this game.";
+		public static string speechRecognitionUsageDescription = "Your voice will be recognized to play this game.";
 
 		#if UNITY_IOS
 		private static string nameOfPlist = "Info.plist";
