@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dissapear : MonoBehaviour
+public class Appear : MonoBehaviour
 {
-    private bool disappear;
+    private bool appear;
     private Vector3 original;
     public bool used;
     // Start is called before the first frame update
     void Start()
     {
-        disappear = false;
+        appear = false;
         original = transform.position;
         used = false;
     }
@@ -20,15 +20,15 @@ public class Dissapear : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            transform.position = new Vector3(1000, 10, 1000);
-            disappear = true;
+            transform.position = original;
+            appear = true;
             used = true;
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.position = original;
-            disappear = false;
+            transform.position = new Vector3(1000, 10, 1000);
+            appear = false;
         }
     }
 }

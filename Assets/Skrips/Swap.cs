@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dissapear : MonoBehaviour
+public class Swap : MonoBehaviour
 {
     private bool disappear;
-    private Vector3 original;
+    private Vector3 originalPos;
+    private Quaternion originalRot;
     public bool used;
+
+    public GameObject other;
     // Start is called before the first frame update
     void Start()
     {
         disappear = false;
-        original = transform.position;
+        originalPos = transform.position;
+        originalRot = transform.rotation;
         used = false;
     }
 
@@ -21,13 +25,17 @@ public class Dissapear : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             transform.position = new Vector3(1000, 10, 1000);
+            other.transform.position = originalPos;
+            other.transform.rotation = originalRot;
+
             disappear = true;
             used = true;
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.position = original;
+            other.transform.position = new Vector3(1000, 10, 1000);
+            transform.position = originalPos;
             disappear = false;
         }
     }
