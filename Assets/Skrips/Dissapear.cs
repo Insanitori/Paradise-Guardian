@@ -4,31 +4,67 @@ using UnityEngine;
 
 public class Dissapear : MonoBehaviour
 {
-    private bool disappear;
+    public bool disappear;
     private Vector3 original;
     public bool used;
+
+    public bool test;
+
+    private RecordingCanvas rec;
     // Start is called before the first frame update
     void Start()
     {
         disappear = false;
         original = transform.position;
         used = false;
+
+        test = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (disappear)
         {
             transform.position = new Vector3(1000, 10, 1000);
             disappear = true;
             used = true;
+
+            if (rec.Final == "Office Missing" || rec.Final == "office missing" || rec.Final == "office Missing" || rec.Final == "Office missing")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
+                {
+                    disappear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+
+                }
+            }
+
+            if (rec.Final == "Exam Missing" || rec.Final == "exam missing" || rec.Final == "exam Missing" || rec.Final == "Exam missing")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
+                {
+                    disappear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+            }
+
+            if (rec.Final == "Kitchen Missing" || rec.Final == "kitchen missing" || rec.Final == "kitchen Missing" || rec.Final == "Kitchen missing")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
+                {
+                    disappear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!disappear)
         {
             transform.position = original;
-            disappear = false;
         }
     }
 }

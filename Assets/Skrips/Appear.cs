@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Appear : MonoBehaviour
 {
-    private bool appear;
+    private RecordingCanvas rec;
+    public bool appear;
     private Vector3 original;
     public bool used;
     // Start is called before the first frame update
     void Start()
     {
+        rec = FindObjectOfType<RecordingCanvas>();
         appear = false;
         original = transform.position;
         used = false;
@@ -18,17 +20,46 @@ public class Appear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (appear)
         {
             transform.position = original;
-            appear = true;
             used = true;
+
+            if (rec.Final == "Office New" || rec.Final == "office new" || rec.Final == "office New" || rec.Final == "Office new")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
+                {
+                    appear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+
+                }
+            }
+
+            if (rec.Final == "Exam New" || rec.Final == "exam new" || rec.Final == "exam New" || rec.Final == "Exam new")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
+                {
+                    appear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+            }
+
+            if (rec.Final == "Kitchen New" || rec.Final == "kitchen new" || rec.Final == "kitchen New" || rec.Final == "Kitchen new")
+            {
+                if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
+                {
+                    appear = false;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen--;
+                    GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!appear)
         {
             transform.position = new Vector3(1000, 10, 1000);
-            appear = false;
         }
     }
 }
