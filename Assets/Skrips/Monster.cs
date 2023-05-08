@@ -141,7 +141,7 @@ public class Monster : MonoBehaviour
         //if player is hiding. nothing happens. If not, jumpscare
         if (FindObjectOfType<CameraPlacer>().hidden == true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             //walk away noise
             AudioSource.PlayClipAtPoint(walking, player.position);
             begin = true;
@@ -158,7 +158,7 @@ public class Monster : MonoBehaviour
         AudioSource.PlayClipAtPoint(walking, player.position);
         transform.position = atta;
         AudioSource.PlayClipAtPoint(t1, player.position);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         //gameOver Screen
         SceneManager.LoadScene("Lose");
         SceneManager.LoadScene("Lose");
