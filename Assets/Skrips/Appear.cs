@@ -30,9 +30,15 @@ public class Appear : MonoBehaviour
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
                 {
                     appear = false;
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().fixe, FindObjectOfType<GyroCamera>().transform.position);
+
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office--;
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
 
+                }
+                else
+                {
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
             }
 
@@ -41,8 +47,14 @@ public class Appear : MonoBehaviour
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
                 {
                     appear = false;
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().fixe, FindObjectOfType<GyroCamera>().transform.position);
+
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam--;
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+                else
+                {
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
             }
 
@@ -51,8 +63,14 @@ public class Appear : MonoBehaviour
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
                 {
                     appear = false;
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().fixe, FindObjectOfType<GyroCamera>().transform.position);
+
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen--;
                     GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().atOnce--;
+                }
+                else
+                {
+                    AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
             }
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GameManaging : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class GameManaging : MonoBehaviour
     public int kitchen;
     public int exam;
 
+    private bool alert;
+    public AudioClip alei;
+
+    public AudioClip nothing;
+    public AudioClip fixe;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +43,8 @@ public class GameManaging : MonoBehaviour
         startOdd = true;
         timeRemaining = 300;
         Timer.text = "???";
+
+        alert = false;
 
         oddity = 0;
         atOnce = 0;
@@ -69,6 +77,7 @@ public class GameManaging : MonoBehaviour
                 Debug.Log("You have Won!");
                 timeRemaining = 0;
                 StartGame = false;
+                SceneManager.LoadScene("Win");
             }
 
             Timer.text = timeRemaining.ToString();
@@ -78,10 +87,20 @@ public class GameManaging : MonoBehaviour
                 RandomOddity();
             }
 
-            if(atOnce >= 5)
+            if(atOnce == 3 && !alert)
             {
-                Debug.Log("You fucked, Boi");
+                //Alert player that there's too much according to the radar
+                AudioSource.PlayClipAtPoint(alei, FindObjectOfType<GyroCamera>().transform.position);
+                alert = true;
             }
+
+            if (atOnce >= 5)
+            {
+                //die
+                FindObjectOfType<Monster>().die = true;
+            }
+
+
         }
     }
 
