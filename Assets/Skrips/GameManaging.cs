@@ -38,7 +38,7 @@ public class GameManaging : MonoBehaviour
         timeRemaining = 300;
         Timer.text = "???";
 
-        oddity = 21;
+        oddity = 0;
         atOnce = 0;
 
         missing = false;
