@@ -75,7 +75,7 @@ public class CameraPlacer : MonoBehaviour
             }
         }
 
-        if (/*rec.Final == "yes" || rec.Final == "Yes"*/ test && clipDone)
+        if (rec.Final == "yes" || rec.Final == "Yes"*/test && clipDone)
         {
             AudioSource.PlayClipAtPoint(tut2, transform.position);
             start = true;
@@ -87,9 +87,10 @@ public class CameraPlacer : MonoBehaviour
 
     public IEnumerator tutorial()
     {
-        yield return new WaitForSeconds(2);
+        /*yield return new WaitForSeconds(2);
         AudioSource.PlayClipAtPoint(tut1, transform.position);
-        yield return new WaitForSeconds(205);
+        yield return new WaitForSeconds(205);*/
+        yield return new WaitForSeconds(3);
         clipDone = true;
     }
 }
