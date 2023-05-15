@@ -34,6 +34,22 @@ public class GameManaging : MonoBehaviour
     public AudioClip nothing;
     public AudioClip fixe;
 
+    public bool OC;
+    public bool EC;
+    public bool KC;
+
+    public bool OM;
+    public bool EM;
+    public bool KM;
+
+    public bool ON;
+    public bool EN;
+    public bool KN;
+
+    public bool OD;
+    public bool ED;
+    public bool KD;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +71,11 @@ public class GameManaging : MonoBehaviour
         office = 0;
         kitchen = 0;
         exam = 0;
+
+        //swap
+        OC = false;
+        EC = false;
+        KC = false;
     }
 
     // Update is called once per frame
@@ -101,7 +122,12 @@ public class GameManaging : MonoBehaviour
 
 
         }
+
+
+
     }
+
+    
 
     public IEnumerator oddbity()
     {

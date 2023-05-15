@@ -11,15 +11,19 @@ public class Swap : MonoBehaviour
 
     public GameObject other;
 
-    private RecordingCanvas rec;
+    
+
+    //private RecordingCanvas rec;
     // Start is called before the first frame update
     void Start()
     {
-        rec = FindObjectOfType<RecordingCanvas>();
+        //rec = FindObjectOfType<RecordingCanvas>();
         disappear = false;
         originalPos = transform.position;
         originalRot = transform.rotation;
         used = false;
+
+        
     }
 
     // Update is called once per frame
@@ -33,7 +37,7 @@ public class Swap : MonoBehaviour
 
             used = true;
 
-            if (rec.Final == "Office Changed" || rec.Final == "office changed" || rec.Final == "office Changed" || rec.Final == "Office changed")
+            if (FindObjectOfType<GameManaging>().OC)
             {
                 if(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
                 {
@@ -48,9 +52,10 @@ public class Swap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().OC = false;
             }
 
-            if (rec.Final == "Exam Changed" || rec.Final == "exam changed" || rec.Final == "exam Changed" || rec.Final == "Exam changed")
+            if (FindObjectOfType<GameManaging>().EC)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
                 {
@@ -64,9 +69,10 @@ public class Swap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>() .EC = false;
             }
 
-            if (rec.Final == "Kitchen Changed" || rec.Final == "kitchen changed" || rec.Final == "kitchen Changed" || rec.Final == "Kitchen changed")
+            if (FindObjectOfType<GameManaging>().KC)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
                 {
@@ -80,6 +86,7 @@ public class Swap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().KC = false;
             }
         }
 

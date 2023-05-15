@@ -6,7 +6,6 @@ using KKSpeech;
 public class RecordingCanvas : MonoBehaviour
 {
   //public GameObject testcube;
-  public string Final;
   public Button startRecordingButton;
   public Text resultText;
 
@@ -39,12 +38,106 @@ public class RecordingCanvas : MonoBehaviour
     resultText.text = result;
     startRecordingButton.enabled = true;
 
-    Final = result;
 
-    /*if(result == "yes")
-        {
-            Destroy(testcube);
-        }*/
+    //Camera Placer
+    if(result == "Exam" || result == "exam")
+    {
+      FindObjectOfType<CameraPlacer>().exam = true;     
+    }
+
+    if(result == "Office" || result == "office")
+    {
+      FindObjectOfType<CameraPlacer>().office = true;     
+    }
+
+    if(result == "kitchen" || result == "Kitchen")
+    {
+      FindObjectOfType<CameraPlacer>().kitchen = true;     
+    }
+
+    if(result == "freeze" || result == "Freeze")
+    {
+      FindObjectOfType<CameraPlacer>().Freeze = true;     
+    }
+
+    if(result == "hide" || result == "Hide")
+    {
+      FindObjectOfType<CameraPlacer>().hide = true;     
+    }
+
+    if(result == "yes" || result == "Yes")
+    {
+      FindObjectOfType<CameraPlacer>().test = true;     
+    }
+
+
+    //Swap
+
+    if(result == "Office Changed" || result == "office changed" || result == "office Changed" || result == "Office changed")
+    {
+      FindObjectOfType<GameManaging>().OC = true;
+    }
+
+    if(result == "Exam Changed" || result == "exam changed" || result == "exam Changed" || result == "Exam changed")
+    {
+      FindObjectOfType<GameManaging>().EC = true;
+    }
+
+    if(result == "Office Changed" || result == "office changed" || result == "office Changed" || result == "Office changed")
+    {
+      FindObjectOfType<GameManaging>().KC = true;
+    }
+
+        //MaterialSwap
+
+    if (result == "Office Color" || result == "office color" || result == "office Color" || result == "Office color")
+    { 
+      FindObjectOfType<GameManaging>().OM = true;
+    }
+
+    if (result == "Exam Color" || result == "exam color" || result == "exam Color" || result == "Exam color")
+    { 
+      FindObjectOfType<GameManaging>().EM = true;
+    }
+
+    if (result == "Kitchen Color" || result == "kitchen color" || result == "kitchen Color" || result == "Kitchen color")
+    { 
+      FindObjectOfType<GameManaging>().KM = true;
+    }
+
+    //Appear
+
+    if (result == "Office New" || result == "office new" || result == "office New" || result == "Office new")
+    { 
+      FindObjectOfType<GameManaging>().ON = true;
+    }
+
+    if (result == "Kitchen New" || result == "kitchen new" || result == "kitchen New" || result == "Kitchen new")
+    { 
+      FindObjectOfType<GameManaging>().KN = true;
+    }
+
+    if (result == "Exam New" || result == "exam new" || result == "exam New" || result == "Exam new")
+    { 
+      FindObjectOfType<GameManaging>().EN = true;
+    }
+
+    //Disappear
+
+    if (result == "Office Missing" || result == "office missing" || result == "office Missing" || result == "Office missing")
+    { 
+      FindObjectOfType<GameManaging>().OD = true;
+    }
+
+    if (result == "Kitchen Missing" || result == "kitchen missing" || result == "kitchen Missing" || result == "Kitchen missing")
+    { 
+      FindObjectOfType<GameManaging>().KD = true;
+    }
+
+    if (result == "Exam Missing" || result == "exam missing" || result == "exam Missing" || result == "Exam missing")
+    { 
+      FindObjectOfType<GameManaging>().ED = true;
+    }
   }
 
   public void OnPartialResult(string result)

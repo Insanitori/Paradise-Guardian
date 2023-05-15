@@ -9,14 +9,14 @@ public class MaterialSwap : MonoBehaviour
     public Material swapMaterial;
     private MeshRenderer _meshRenderer;
 
-    private RecordingCanvas rec;
+    //private RecordingCanvas rec;
 
     public bool swapMesh;
     public bool used;
     // Start is called before the first frame update
     void Start()
     {
-        rec = FindObjectOfType<RecordingCanvas>();
+        //rec = FindObjectOfType<RecordingCanvas>();
         _meshRenderer = GetComponent<MeshRenderer>();
 
         _meshRenderer.material = _material;
@@ -31,7 +31,7 @@ public class MaterialSwap : MonoBehaviour
             _meshRenderer.material = swapMaterial;
             used = true;
 
-            if (rec.Final == "Office Color" || rec.Final == "office color" || rec.Final == "office Color" || rec.Final == "Office color")
+            if (FindObjectOfType<GameManaging>().OM)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
                 {
@@ -46,9 +46,10 @@ public class MaterialSwap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().OM = false;
             }
 
-            if (rec.Final == "Exam Color" || rec.Final == "exam color" || rec.Final == "exam Color" || rec.Final == "Exam color")
+            if (FindObjectOfType<GameManaging>().EM)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
                 {
@@ -62,9 +63,10 @@ public class MaterialSwap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().EM = false;
             }
 
-            if (rec.Final == "Kitchen Color" || rec.Final == "kitchen color" || rec.Final == "kitchen Color" || rec.Final == "Kitchen color")
+            if (FindObjectOfType<GameManaging>().KM)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
                 {
@@ -78,6 +80,7 @@ public class MaterialSwap : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().KM = false;
             }
         }
 

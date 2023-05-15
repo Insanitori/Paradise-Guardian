@@ -10,7 +10,7 @@ public class Dissapear : MonoBehaviour
 
     public bool test;
 
-    private RecordingCanvas rec;
+    //private RecordingCanvas rec;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +30,7 @@ public class Dissapear : MonoBehaviour
             disappear = true;
             used = true;
 
-            if (rec.Final == "Office Missing" || rec.Final == "office missing" || rec.Final == "office Missing" || rec.Final == "Office missing")
+            if (FindObjectOfType<GameManaging>().OD)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
                 {
@@ -45,9 +45,10 @@ public class Dissapear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().OD = false;
             }
 
-            if (rec.Final == "Exam Missing" || rec.Final == "exam missing" || rec.Final == "exam Missing" || rec.Final == "Exam missing")
+            if (FindObjectOfType<GameManaging>().ED)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
                 {
@@ -61,9 +62,10 @@ public class Dissapear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().ED = false;
             }
 
-            if (rec.Final == "Kitchen Missing" || rec.Final == "kitchen missing" || rec.Final == "kitchen Missing" || rec.Final == "Kitchen missing")
+            if (FindObjectOfType<GameManaging>().KD)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
                 {
@@ -77,6 +79,7 @@ public class Dissapear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().KD = false;
             }
         }
 

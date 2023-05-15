@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Appear : MonoBehaviour
 {
-    private RecordingCanvas rec;
+    //private RecordingCanvas rec;
     public bool appear;
     private Vector3 original;
     public bool used;
     // Start is called before the first frame update
     void Start()
     {
-        rec = FindObjectOfType<RecordingCanvas>();
+        //rec = FindObjectOfType<RecordingCanvas>();
         appear = false;
         original = transform.position;
         used = false;
@@ -25,7 +25,7 @@ public class Appear : MonoBehaviour
             transform.position = original;
             used = true;
 
-            if (rec.Final == "Office New" || rec.Final == "office new" || rec.Final == "office New" || rec.Final == "Office new")
+            if (FindObjectOfType<GameManaging>().ON)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().office > 0)
                 {
@@ -40,9 +40,10 @@ public class Appear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().ON = false;
             }
 
-            if (rec.Final == "Exam New" || rec.Final == "exam new" || rec.Final == "exam New" || rec.Final == "Exam new")
+            if (FindObjectOfType<GameManaging>().EN)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().exam > 0)
                 {
@@ -56,9 +57,11 @@ public class Appear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+
+                FindObjectOfType<GameManaging>().EN = false;
             }
 
-            if (rec.Final == "Kitchen New" || rec.Final == "kitchen new" || rec.Final == "kitchen New" || rec.Final == "Kitchen new")
+            if (FindObjectOfType<GameManaging>().KN)
             {
                 if (GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().kitchen > 0)
                 {
@@ -72,6 +75,7 @@ public class Appear : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().nothing, FindObjectOfType<GyroCamera>().transform.position);
                 }
+                FindObjectOfType<GameManaging>().KN = false;
             }
         }
 

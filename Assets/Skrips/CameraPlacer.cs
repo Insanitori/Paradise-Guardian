@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraPlacer : MonoBehaviour
 {
-    private RecordingCanvas rec;
+    //private RecordingCanvas rec;
 
     public Transform OfficeCam;
     public Transform KitchenCam;
@@ -23,6 +23,13 @@ public class CameraPlacer : MonoBehaviour
     public AudioClip tut2;
 
     public AudioClip breathing;
+
+    public bool exam;
+    public bool office;
+    public bool kitchen;
+    public bool Freeze;
+    public bool hide; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +38,14 @@ public class CameraPlacer : MonoBehaviour
         clipDone = false;
         start = false;
 
+        exam = false;
+        office = false;
+        kitchen = false;
+        Freeze = false;
+        hide = false;
+
         test = false;
-        rec = FindObjectOfType<RecordingCanvas>();
+        //rec = FindObjectOfType<RecordingCanvas>();
         transform.position = OfficeCam.position;
 
         StartCoroutine(tutorial());
@@ -43,39 +56,44 @@ public class CameraPlacer : MonoBehaviour
     {
         if (start)
         {
-            if (rec.Final == "Exam" || rec.Final == "exam")
+            if (exam)
             {
                 transform.position = ExamCam.position;
+                exam = false;
                 hidden = false;
                 frozen = false;
             }
-            else if (rec.Final == "Office" || rec.Final == "office")
+            else if (office)
             {
                 transform.position = OfficeCam.position;
+                office = false;
                 hidden = false;
                 frozen = false;
             }
-            else if (rec.Final == "Kitchen" || rec.Final == "kitchen")
+            else if (kitchen)
             {
                 transform.position = KitchenCam.position;
+                kitchen = false;
                 hidden = false;
                 frozen = false;
             }
 
-            if (rec.Final == "Freeze" || rec.Final == "freeze")
+            if (Freeze)
             {
+                Freeze = false;
                 frozen = true;
             }
 
-            if (rec.Final == "Hide" || rec.Final == "hide")
+            if (hide)
             {
+                hide = false;
                 hidden = true;
                 transform.position = hiddingCam.position;
                 AudioSource.PlayClipAtPoint(breathing, transform.position);
             }
         }
 
-        if (rec.Final == "yes" || rec.Final == "Yes"*/test && clipDone)
+        if (test && clipDone)
         {
             AudioSource.PlayClipAtPoint(tut2, transform.position);
             start = true;
