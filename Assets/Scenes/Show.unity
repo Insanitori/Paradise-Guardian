@@ -2533,7 +2533,7 @@ MonoBehaviour:
   OfficeCam: {fileID: 1557103250}
   KitchenCam: {fileID: 578663814}
   ExamCam: {fileID: 680256843}
-  hiddingCam: {fileID: 0}
+  hiddingCam: {fileID: 1711851073}
   hidden: 0
   frozen: 0
   test: 0

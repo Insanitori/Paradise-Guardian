@@ -35,7 +35,7 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
-        attacktime = 17;
+        attacktime = 18;
         watching = new Vector3 (1000, 0, 1000);
         atta = new Vector3(.11f, -1.88f, 0.88f);
 
@@ -102,7 +102,7 @@ public class Monster : MonoBehaviour
             AudioSource.PlayClipAtPoint(g4, player.position);
         }
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(8);
         //if player is frozen. nothing happens. If not, jumpscare
         if(FindObjectOfType<CameraPlacer>().frozen == true)
         {
@@ -137,7 +137,7 @@ public class Monster : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(t4, player.position);
         }
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(8);
         //if player is hiding. nothing happens. If not, jumpscare
         if (FindObjectOfType<CameraPlacer>().hidden == true)
         {

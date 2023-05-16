@@ -95,11 +95,12 @@ public class CameraPlacer : MonoBehaviour
 
         if (test && clipDone)
         {
+            clipDone = false;
             AudioSource.PlayClipAtPoint(tut2, transform.position);
             start = true;
             GameObject.Find("GameeeMAHER").GetComponent<GameManaging>().StartGame = true;
             FindObjectOfType<Monster>().begin = true;
-            clipDone = false;
+            
         }
     }
 
@@ -108,7 +109,6 @@ public class CameraPlacer : MonoBehaviour
         yield return new WaitForSeconds(2);
         AudioSource.PlayClipAtPoint(tut1, transform.position);
         yield return new WaitForSeconds(205);
-        yield return new WaitForSeconds(3);
         clipDone = true;
     }
 }
