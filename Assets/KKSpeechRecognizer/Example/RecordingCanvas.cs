@@ -201,7 +201,7 @@ public class RecordingCanvas : MonoBehaviour
     {
       SpeechRecognizer.StartRecording(true);
       startRecordingButton.GetComponentInChildren<Text>().text = "Stop Recording";
-      resultText.text = "Wait for K to be done, then press the button.";
+      resultText.text = "Say something :-)";
     }
   }
 }
